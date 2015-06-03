@@ -212,7 +212,7 @@
                     </div>
                 </article>        
             </section> 
-            {{-- contact-page = statique }}
+            {{-- contact-page = statique --}}
             <section id="contact-page" class="page-systeme page-contenu" style="width: 1516px; min-height: 796px;">
                 <h1 class="text-center transform stroke titrePage">Contacts</h1>
                 <article>
