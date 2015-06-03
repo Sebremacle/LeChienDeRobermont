@@ -1,5 +1,7 @@
 <?php
 
+use App\Rubrique;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,6 +20,11 @@
 )->where('rubrique_slug', '[a-z0-9-]+');*/
 
 Route::get('/', 'RubriqueController@index');
+
+View::creator('layouts.menu', function($view)
+{
+    $view->with('rubriques', Rubrique::all());
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
