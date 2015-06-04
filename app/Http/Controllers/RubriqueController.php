@@ -29,10 +29,8 @@ class RubriqueController extends Controller {
 	{
         
         $rubriques = Rubrique::all();
-
-        var_dump($rubriques);
         
-        //return view('Rubrique.index');
+        return view('Rubrique.index');
 	}
 
 }

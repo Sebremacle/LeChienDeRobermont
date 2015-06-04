@@ -1,6 +1,5 @@
 # LeChienDeRobermont
-School project
+## School project @ IEPS Fléron 2015
+### Florian Husquinet & Sébastien Remacle
 
-Sebastien est un collaborateur
-
-Coucou
+This is simply a school project using the PHP Framework Laravel 5.
