@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Rubrique;
+use App\Media;
 
 class RubriqueController extends Controller {
 
@@ -27,10 +28,12 @@ class RubriqueController extends Controller {
 	 */
 	public function index()
 	{
+
+            
+        $rubriques = Rubrique::with('articles')->orderBy('tri', 'ASC')->get();
+        $medias = Media::all();
         
-        $rubriques = Rubrique::all();
-        
-        return view('Rubrique.index');
+        return view('Rubrique.index', ['rubriques'=>$rubriques, 'medias'=>$medias]);
 	}
 
 }
