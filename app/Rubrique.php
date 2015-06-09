@@ -6,7 +6,7 @@ class Rubrique extends Model {
     
     public function articles()
     {
-        return $this->hasMany('Article');
+        return $this->hasMany('App\Article');
     }
     
 }

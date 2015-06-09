@@ -6,7 +6,7 @@ class Article extends Model {
 
     public function rubrique()
     {
-        return $this->belongsTo('Rubrique');
+        return $this->belongsTo('App\Rubrique');
     }
 
 }
