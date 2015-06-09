@@ -13,17 +13,11 @@ use App\Rubrique;
 |
 */
 
-/*Route::get('{rubrique_slug}',[
-    'as' => 'rubrique', 
-    'uses' => 'RubriqueController@detail'
-    ]
-)->where('rubrique_slug', '[a-z0-9-]+');*/
-
 Route::get('/', 'RubriqueController@index');
 
 View::creator('layouts.menu', function($view)
 {
-    $view->with('rubriques', Rubrique::all());
+    $view->with('rubriques', Rubrique::orderBy('tri', 'ASC')->get());
 });
 
 Route::controllers([
