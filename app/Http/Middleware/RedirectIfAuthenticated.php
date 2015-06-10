@@ -36,7 +36,7 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return Redirect::route('admin_articles');
+			return Redirect::route('admin.articles');
 		}
 
 		return $next($request);
