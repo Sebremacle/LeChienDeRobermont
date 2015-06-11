@@ -13,20 +13,55 @@ use App\Rubrique;
 |
 */
 
-/*Route::get('{rubrique_slug}',[
-    'as' => 'rubrique', 
-    'uses' => 'RubriqueController@detail'
-    ]
-)->where('rubrique_slug', '[a-z0-9-]+');*/
 
-Route::get('/', 'RubriqueController@index');
+/*
+|--------------------------------------------------------------------------
+| Routes Publiques
+|--------------------------------------------------------------------------
+*/
+Route::get('/', ['as' => 'accueil', 'uses' => 'RubriqueController@index']);
 
-View::creator('layouts.menu', function($view)
-{
-    $view->with('rubriques', Rubrique::all());
+
+/*
+|--------------------------------------------------------------------------
+| Routes Administration
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Administration : Articles
+    |--------------------------------------------------------------------------
+    */
+    
+    Route::resource('article', 'Admin\ArticleController');
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Administration : Médias
+    |--------------------------------------------------------------------------
+    */
+    
+    Route::resource('media', 'Admin\MediaController');
+    
 });
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+
+/*
+|--------------------------------------------------------------------------
+| Gestion du menu
+|--------------------------------------------------------------------------
+*/
+View::creator('layouts.menu', function($view)
+{
+    $view->with('rubriques', Rubrique::orderBy('tri', 'ASC')->get());
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Authentificate
+|--------------------------------------------------------------------------
+*/
+Route::controller('auth', 'Auth\AuthController');

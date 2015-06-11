@@ -1,89 +1,69 @@
-@extends('layouts.master')
+@extends('app')
 
 @section('titre', 'Index')
 
 @section('contenu')
     
         <div id="pages" class="trans" style="width: 9096px; right: 0%; height: 2188px;">
-            {{-- section1 = homepage --}}
-            {{-- Il faut aller chercher l'article qui est à "home" à 1 dans la db --}}
             <section id="section1" class="page-systeme page-accueil  page-actuelle" style="width: 1516px; min-height: 796px;">
                 <h1 class="text-center transform stroke">Le <span class="grand">chien</span> <br>de Robermont</h1>
                 <p class="text-center transform">ASBL - Education canine</p>
                 <article>
-                    <h2 class="text-center transform titreArticle">Horaire des cours</h2>
-                    <div class="article row lato  ">
-                        <div class="text-center transform thumb">
-                            <img width="424" height="283" src="{{ URL::asset('img/1.jpg') }}" class="attachment-post-thumbnail wp-post-image" alt="Hundetraining">
-                        </div>
+                    <h2 class="text-center transform titreArticle">{{ $articleAccueil->titre }}</h2>
+                    <div class="article row lato">
+                        @if(isset($articleAccueil->photo))
+                            <div class="text-center transform thumb">
+                                <img width="424" height="283" src="{{ URL::asset('img/'.$articleAccueil->photo) }}" class="attachment-post-thumbnail wp-post-image" alt="Hundetraining">
+                            </div>
+                        @endif
                         <div>
-                            <h1>Puppies de 3 à 6 mois</h1>
-                            <p>Mercredi: 17h30 – 18h00</p>
-                            <p>Dimanche: 9h00 – 9h30</p>
-                            <hr>
-                            <h1>Groupe + de 6 mois</h1>
-                            <p>Mercredi: 18h30 – 19h30</p>
-                            <p>Dimanche: 9h30 – 10h30</p>
-                            <hr>
-                            <h1>Groupe 2 et 3</h1>
-                            <p>Mercredi: 19h30 – 20h30</p>
-                            <p>Dimanche: 10h30 – 11h30</p>
-                            <hr>
-                            <h1>Groupe Concours</h1>
-                            <p>Mercredi: 20h30 – 21h30</p>
-                            <p>Dimanche: 11h30 – 12h30</p>
-                            <p>&nbsp;</p>
+                            {{ $articleAccueil->texte }}
                         </div>
                    </div>
                 </article>        
             </section> 
-            {{-- section2 -> section5 = loop des rubriques --}}
+            
             @foreach($rubriques as $rubrique)
                 <section id="section{{ $rubrique->tri+1 }}" class="page-systeme page-contenu" style="width: 1516px; min-height: 796px;">
                     <h1 class="text-center transform stroke titrePage">{{ $rubrique->titre }}</h1>
                     
-                @if($rubrique->galerie === 1)
-                    <article>
-                        <h2 class="text-center transform titreArticle">Gallerie photo</h2>
-                        <div class="article row lato  ">
-                            <div class="text-center transform thumb"></div>
-                            <div>
-                                
-                                <div id="gallery-1" class="gallery galleryid-35 gallery-columns-3 gallery-size-thumbnail">
-                                    @foreach($medias as $media)
-                                    <dl class="gallery-item">
-                                        <dt class="gallery-icon landscape">
-                                            <a href="{{ URL::asset('img/'.$media->photo) }}" data-slb-group="35" data-slb-active="1" data-slb-internal="0"><img width="150" height="150" src="{{ URL::asset('img/'.$media->photoMiniature) }}" class="attachment-thumbnail" alt="1"></a>
-                                        </dt>
-                                    </dl>
-                                    @endforeach
-                                    <br style="clear: both">
+                    @if($rubrique->galerie === 1)
+                        <article>
+                            <h2 class="text-center transform titreArticle">Gallerie photo</h2>
+                            <div class="article row lato  ">
+                                <div class="text-center transform thumb"></div>
+                                <div>
+
+                                    <div id="gallery-1" class="gallery galleryid-35 gallery-columns-3 gallery-size-thumbnail">
+                                        @foreach($medias as $media)
+                                            <dl class="gallery-item">
+                                                <dt class="gallery-icon landscape">
+                                                    <a href="{{ URL::asset('img/'.$media->photo) }}" data-slb-group="35" data-slb-active="1" data-slb-internal="0"><img width="150" height="150" src="{{ URL::asset('img/'.$media->photoMiniature) }}" class="attachment-thumbnail" alt="1"></a>
+                                                </dt>
+                                            </dl>
+                                        @endforeach
+                                        <br style="clear: both">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article> 
-                    
-                    
-                    
-                    
-                
-                @else
-                    @foreach($rubrique->articles as $article)
-                    <article>
-                        <h2 class="text-center transform titreArticle ">{{ $article->titre }}</h2>
-                        <div class="article row lato  ">
+                        </article>    
+                    @else
+                        @foreach($rubrique->articles as $article)
+                        <article>
+                            <h2 class="text-center transform titreArticle ">{{ $article->titre }}</h2>
+                            <div class="article row lato  ">
                                 @if(isset($article->photo))
-                                <div class="text-center transform thumb">
-                                    <img width="424" height="283" src="{{ URL::asset('img/'.$article->photo) }}" class="attachment-post-thumbnail wp-post-image" alt="Hundetraining">
-                                </div>
+                                    <div class="text-center transform thumb">
+                                        <img width="424" height="283" src="{{ URL::asset('img/'.$article->photo) }}" class="attachment-post-thumbnail wp-post-image" alt="Hundetraining">
+                                    </div>
                                 @endif
                                 <div>
                                     {{ $article->texte }}
                                 </div>
                             </div>
-                    </article>
-                    @endforeach
-                @endif
+                        </article>
+                        @endforeach
+                    @endif
             </section>
             
             @endforeach
