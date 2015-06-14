@@ -3,6 +3,7 @@
 @section('titre', 'Liste des médias')
 
 @section('contenu')
+<a href="{{ URL::asset('/admin/media') }}"><input type="button" value="Retour"> </a>
     <h1>Editer {{ $media->titre }}</h1>
 
     @if (count($errors) > 0)

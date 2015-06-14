@@ -1,6 +1,6 @@
 /* Général */
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box; outline: none;}
-body{font-family: helvetica, arial, sans-serif; margin: 0; padding: 0; background: #fff3d3;}
+body{font-family: helvetica, arial, sans-serif; margin: 0; padding: 0; }
 
 @media (max-width:768px){
 .boxCenter{width: 100%; padding: 0 10%; margin: 0 auto;}
@@ -14,7 +14,8 @@ body{font-family: helvetica, arial, sans-serif; margin: 0; padding: 0; backgroun
 
 
 .boxLarge{width: 100%;}
-
+ul{padding: 0; list-style: none;}
+li{margin: 0; list-style: none;}
 
 /* Titres et blocs de texte */
 h1,h2,h3{ font-weight: 100;}
@@ -24,18 +25,16 @@ h3{font-size: 24px;}
 h4{font-size: 18px; font-weight: 600;}
 p{}
 .textCenter{text-align: center;}
-.textBold{font-weight: 600;}
-.lineHeightSmall{line-height: 24px;}
-.lineHeightNormal{line-height: 28px;}
-.lineHeightBig{line-height: 34px;}
 a{text-decoration: none;}
 
-/* Liens */
 p a{text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid;}
 
 
-/* Couleurs */
-header{background: #f09a3d; padding: 50px 10%;}
+header{background: #f09a3d; padding: 50px 10%; height: 200px; }
+header img{float: left; width: 120px;}
+header h1{line-height: 0; float: right;}
+header ul{float: right;}
+
 .menu a li{background: #f05a2e; color: #fff;}.menu a:hover li{background: #872022; color: white;}
 
 #page{padding: 100px 0;}
@@ -46,10 +45,10 @@ header{background: #f09a3d; padding: 50px 10%;}
 .block a li{display: block; padding: 10px 20px; border-radius: 3px; margin: 6px 0;}
 
 input[type='text'], textarea{padding: 15px 20px; width: 100%; margin: 0 0 25px 0; border: 1px solid #dedede; font-size: 14px; font-weight: 200; font-family: 'Titillium Web', sans-serif; border-radius: 5px;}
-input[type='submit']{padding: 20px; width: 100%; border: 0; background: #f05a2e; color: white; font-size: 14px; text-transform: uppercase; font-weight: 600;font-family: 'Titillium Web', sans-serif; border-radius: 5px;}
+input[type='submit']{padding: 20px; width: 100%; border: 0; background: #f05a2e; color: white; font-size: 14px;font-weight: 600;font-family: 'Titillium Web', sans-serif; border-radius: 5px;}
 input[type='submit']:hover{background: #872022; cursor: pointer;}
 input[type='text']:hover, textarea:hover{border-color: #d1d1d1; }
 input[type='text']:focus, textarea:focus{border: 1px solid #909090;}
 textarea{height: 200px;}
-
+select{padding: 15px 20px; width: 100%; margin: 0 0 25px 0; border: 1px solid #dedede; font-size: 14px; font-weight: 200; font-family: 'Titillium Web', sans-serif; border-radius: 5px; -webkit-appearance:none; background: white;}
 

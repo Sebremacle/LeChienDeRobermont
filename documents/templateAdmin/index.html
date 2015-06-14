@@ -7,9 +7,13 @@
 	<TITLE>Administration Le Chien de Robermont</TITLE>
 	<!-- Styles CSS -->
 	<link href="general.css" rel="stylesheet">
+	<link href="tabulous.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="tabulous.js"></script>
 </head>
 <body>
 	<header class="boxLarge">
+		<img src="images/logo.png" alt="Logo Chien de Robermont">
 		<h1 class="textCenter">Administration Le Chien de Robermont</h1>
 		<ul class="menu inline textCenter">
 			<a href="#"><li>Gestion des articles</li></a>
@@ -19,11 +23,42 @@
 	</header>
 	
 	<section id="page" class="boxCenter">
-				<h3 class="textCenter">Ajouter un article</h3>
-		<input type="text" placeholder="Titre">
-		<input type="text" placeholder="Image">
-		<textarea placeholder="Texte"></textarea>
-		<input type="submit" value="Ajouter l'article">
+		<h1>Gestion des articles</h1>
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1" title="">Ajouter</a></li>
+				<li><a href="#tabs-2" title="">A propos</a></li>
+				<li><a href="#tabs-3" title="">Les cours</a></li>
+				<li><a href="#tabs-4" title="">Agenda</a></li>
+			</ul>
+	
+			<div id="tabs_container">
+				<div id="tabs-1">
+					<input type="text" placeholder="Titre">
+					<select>
+						<option value="A propos">A propos</option>
+						<option value="Les cours">Les cours</option>
+						<option value="Agenda">Agenda</option>
+					</select>
+					<input type="text" placeholder="Image">
+					<textarea placeholder="Texte"></textarea>
+					<input type="submit" value="Ajouter l'article">
+				</div>
+		
+				<div id="tabs-2">
+					<p>Editer</p>
+				</div>
+				
+				<div id="tabs-3">
+					<p>Editer</p>
+				</div>
+				
+				<div id="tabs-4">
+					<p>Editer</p>
+				</div>
+			</div>
+		</div>	
+		
 	</section>
 
 </body>
